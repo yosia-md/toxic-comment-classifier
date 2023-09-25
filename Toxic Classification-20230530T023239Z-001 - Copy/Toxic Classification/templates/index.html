@@ -1,0 +1,286 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toxic Comment Classification</title>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <section class="header">
+        <h1>Toxic Comment Classification</h1>
+        <div class ="rectangleheader">
+            
+        </div>
+    </section> 
+
+    <form action="/predict" method="post">
+        <div class="apajalah">
+            <div class="scanbox">
+                <input class = "gedein" type="text" id="text1" name="text1" placeholder="insert your text">
+            </div>
+            
+            <br>
+        
+            
+                <button type ="submit" class="scannow">Scan Now</button>
+
+        </div>
+
+    </form>
+    
+    <section>
+        <div class ="tabel">
+            <div class = "jarak">
+                <div class ="artibut">
+                    <h3>
+                    Obscene
+                    </h3>
+                    <h1>
+                {{obscene}}%
+                    </h1>
+                </div>
+                <div class ="artibut">
+                    <h3>
+                    Insult
+                    </h3>
+                    <h1>
+                    {{insult}}%
+                    </h1>
+                </div>
+                <div class ="artibut">
+                    <h3>
+                    Toxic
+                    </h3>
+                    <h1>
+                        {{toxic}}%
+                    </h1>
+                </div>
+                <div class ="artibut">
+                    <h3>
+                    Severe Toxic
+                    </h3>
+                    <h1>
+                        {{severe_toxic}}%
+                    </h1>
+                </div>
+                <div class ="artibut">
+                    <h3>
+                    Identity Hate
+                    </h3>
+                    <h1>
+                        {{identity_hate}}%
+                    </h1>
+                </div>
+                <div class ="artibut">
+                    <h3>
+                    Threat
+                    </h3>
+                    <h1>
+                        {{threat}}%
+                    </h1>
+                </div>
+            </div>
+        </div>
+
+    </section>
+<style>
+    sub-header{
+
+position: absolute;
+width: 15%;
+height: 15%;
+left: 0%;
+top: 3%;
+
+
+}
+
+*{
+    margin:0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+}
+
+.rectangleheader{
+
+    position: absolute;
+    width: 1728px;
+    height: 147px;
+    left: 0px;
+    top: 2px;
+    
+    background: rgba(80, 148, 127, 0.29);
+}
+
+.header{
+    text-align: center;
+    margin-top: 3%;
+    font-size: 32px;
+    color: #C36767;
+}
+
+
+.middlebox{
+    position: absolute;
+    width: 248px;
+    height: 36px;
+    left: 740px;
+    top: 472px;
+    
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 29px;
+    
+    color: rgba(0, 0, 0, 0.63);
+}
+
+.scanbox{
+    width: 30%;
+    height: 35%;
+    left: 40%;
+    top: 35%;
+    justify-content: space-between;
+    display:flex;
+    margin:auto;
+    border-radius: 10px;
+}
+
+.scannow{
+    margin: auto;
+    width: 10%;
+    height: 5%;
+    left: 40%;
+    top: 70%;
+    display: flex;
+    background: #D56F6F;
+    align-items: center;
+    border-radius: 10px;
+    justify-content: center;
+
+}
+
+.scannow:hover{
+    cursor: pointer;
+    color: #FFFFFF;
+}
+
+.scantext{
+    position: absolute;
+    width: 58px;
+    height: 29px;
+    left: 832px;
+    top: 743px;
+    
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 29px;
+    /* identical to box height */
+    text-align: center;
+    
+    color: #FFFFFF;
+}
+
+.result{
+    position: absolute;
+    width: 90%;
+    height: 35%;
+    left: 5%;
+    right: 5%;
+    top:98%;
+    background: rgba(80, 148, 127, 0.29);
+}
+
+
+.precentage{
+    position: absolute;
+    width: 214px;
+    height: 87px;
+    left: 183px;
+    top: 941.04px;
+    
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 72px;
+    line-height: 87px;
+    
+    color: #FFFFFF;
+    
+    transform: rotate(-0.28deg);
+}
+
+
+.labels{
+    position: absolute;
+    width: 130px;
+    height: 36px;
+    left: 211px;
+    top: 904px;
+    
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 36px;
+    text-align: center;
+    
+    color: #FFFFFF;
+    
+}
+
+.gedein{
+    width:100%;
+    height:100%;
+}
+
+
+::-webkit-input-placeholder {
+    /* Webkit-based browsers (Chrome, Safari) */
+    color: #999;
+    text-align: center;
+  }
+
+.apajalah{
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.tabel{
+    width:80%;
+    background-color: rgba(80, 148, 127, 0.29);
+    margin: auto;
+    height: 100px;
+    align-items: center;
+    display: flex;
+    margin-bottom: 5%;
+}
+
+.jarak{
+    width: 80%;
+    display:flex;
+    justify-content: space-between;
+    margin: auto;
+}
+
+.artibut{
+    color: #C36767;
+    text-align: center;
+}
+
+#text1{
+    text-align: center;
+}
+</style>
+
+
+</body>
+</html>
